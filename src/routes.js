@@ -1,6 +1,7 @@
 import React from 'react';
 import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom';
 import { isAuthenticated } from './services/auth';
+import Header from './components/Header';
 
 const PrivateRoute = ({component: Component, ...rest}) => (
   <Route
@@ -17,7 +18,7 @@ const PrivateRoute = ({component: Component, ...rest}) => (
 const Routes = () => (
   <BrowserRouter>
     <Switch>
-      <Route exact path="/" component={() => <h1>Hello world</h1>} />
+      <Route exact path="/" component={Header} />
       <PrivateRoute path="/app" component={() => <h1>Logado</h1>} />
     </Switch>
   </BrowserRouter>
