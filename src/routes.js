@@ -2,6 +2,7 @@ import React from 'react';
 import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom';
 import { isAuthenticated } from './services/auth';
 import Header from './components/Header';
+import Board from './components/Board';
 
 const PrivateRoute = ({component: Component, ...rest}) => (
   <Route
@@ -18,7 +19,11 @@ const PrivateRoute = ({component: Component, ...rest}) => (
 const Routes = () => (
   <BrowserRouter>
     <Switch>
-      <Route exact path="/" component={Header} />
+      <Route exact path="/" component={() =>
+        <>
+          <Header/>
+          <Board/>
+        </>} />
       <PrivateRoute path="/app" component={() => <h1>Logado</h1>} />
     </Switch>
   </BrowserRouter>
