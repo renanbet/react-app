@@ -2,10 +2,13 @@ import React from 'react';
 
 import { Container } from './styles';
 
-export default function Card() {
+export default function Card({id, content, labels, user}) {
   return (
     <Container>
-      <h1>Card</h1>
+      <span>{id}</span>
+      <span>{content}</span>
+      <span>{labels}</span>
+      <span>{user}</span>
     </Container>
   );
 }

@@ -1,11 +1,16 @@
 import React from 'react';
+import Card from '~/components/Card';
 
 import { Container } from './styles';
 
-export default function List() {
+export default function List({title, creatable, cards}) {
   return (
     <Container>
-      <h1>List</h1>
+      {
+        cards.map((item, index) => {
+          return <Card key={index} {...item} />
+        })
+      }
     </Container>
   );
 }
