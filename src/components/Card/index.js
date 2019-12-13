@@ -1,14 +1,10 @@
-import React, { useRef, useContext } from 'react';
+import React, { useRef } from 'react';
 import { useDrag, useDrop } from 'react-dnd'
 
 import { Container } from './styles';
 
-import BoardContext from '~/components/Board/context'
-
 export default function Card({id, content, labels, user, index, listIndex}) {
   const ref = useRef();
-
-  const { move } = useContext(BoardContext)
 
   const [{ isDragging }, dragRef] = useDrag(
     {
@@ -51,7 +47,7 @@ export default function Card({id, content, labels, user, index, listIndex}) {
       if (draggedListIndex === targetListIndex && draggedIndex === targetIndex + 1 && graggedTop > targetCenter)
         return;
 
-      move(draggedListIndex, targetListIndex , draggedIndex, targetIndex);
+      // move(draggedListIndex, targetListIndex , draggedIndex, targetIndex);
 
       item.index = targetIndex;
       item.listIndex = targetListIndex;
