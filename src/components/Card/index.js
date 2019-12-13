@@ -26,7 +26,7 @@ export default function Card({id, content, labels, user, index, listIndex}) {
     }
   )
 
-  const [{isDropped}, dropRef] = useDrop({
+  const [, dropRef] = useDrop({
     accept: 'CARD',
     hover(item, monitor) {
       const draggedIndex = item.index;
