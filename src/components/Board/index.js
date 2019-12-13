@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import List from '~/components/List'
 
 import { Container } from './styles';
@@ -8,10 +8,13 @@ import produce from 'immer'
 
 import BoardContext from './context';
 
-const data = loadLists();
-
 export default function Board() {
-  const [lists, setLists] = useState(data)
+
+  const [lists, setLists] = useState([])
+
+  useEffect(() => {
+    setLists(loadLists())
+  }, [])
 
   const move = (fromList, toList, from, to) => {
     setLists(produce(lists, draft => {
