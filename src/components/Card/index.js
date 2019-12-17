@@ -2,9 +2,13 @@ import React, { useRef } from 'react';
 import { useDrag, useDrop } from 'react-dnd'
 
 import { Container } from './styles';
+import { useSelector, useDispatch } from 'react-redux';
+import produce from 'immer'
 
 export default function Card({id, content, labels, user, index, listIndex}) {
   const ref = useRef();
+  const dispatch = useDispatch();
+  let lists = useSelector(state => state.lists);
 
   const [{ isDragging }, dragRef] = useDrag(
     {
@@ -47,7 +51,14 @@ export default function Card({id, content, labels, user, index, listIndex}) {
       if (draggedListIndex === targetListIndex && draggedIndex === targetIndex + 1 && graggedTop > targetCenter)
         return;
 
-      // move(draggedListIndex, targetListIndex , draggedIndex, targetIndex);
+      let move = {
+        type: 'MOVE',
+        fromList: draggedListIndex,
+        toList: targetListIndex,
+        from: draggedIndex,
+        to: targetListIndex
+      }
+      dispatch(move);
 
       item.index = targetIndex;
       item.listIndex = targetListIndex;

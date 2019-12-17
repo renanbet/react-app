@@ -4,9 +4,6 @@ import List from '~/components/List'
 import { Container } from './styles';
 import { loadLists } from '~/services/api';
 
-// import produce from 'immer'
-
-
 import { useSelector, useDispatch } from 'react-redux';
 
 const initializeLists = () => {
@@ -21,14 +18,6 @@ export default function Board() {
   useEffect(() => {
     dispatch(initializeLists());
   }, [])
-
-  // const move = (fromList, toList, from, to) => {
-  //   setLists(produce(lists, draft => {
-  //     const dragged = draft[fromList].cards[from];
-  //     draft[fromList].cards.splice(from, 1);
-  //     draft[toList].cards.splice(to, 0, dragged);
-  //   }))
-  // };
 
   return (
     <Container>
